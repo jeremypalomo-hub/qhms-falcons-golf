@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Falcons Golf · Quail Hollow Middle School</title>
+  <meta name="description" content="Quail Hollow Middle School Falcons golf — Charlotte, North Carolina. Team, schedule, photos, and announcements.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%230E2A1F' width='64' height='64'/%3E%3Cpath fill='%23C4A35A' d='M32 10c8 10 18 16 18 28a18 18 0 1 1-36 0c0-12 10-18 18-28z'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --forest: #0E2A1F;
+      --fairway: #1F4D38;
+      --moss: #3E6B4F;
+      --cream: #F4EFE4;
+      --ivory: #FBF8F1;
+      --navy: #0C1A2B;
+      --gold: #C4A35A;
+      --gold-dim: #9A7C3E;
+      --maroon: #6E2430;
+      --ink: #1A241E;
+      --muted: #5C6A62;
+      --rule: color-mix(in srgb, var(--gold) 55%, transparent);
+      --shadow: 0 24px 60px rgba(12, 26, 43, .28);
+      --nav-h: 4.5rem;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    html, body { background: var(--ivory); color: var(--ink); }
+    body {
+      font-family: Outfit, system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.55;
+      letter-spacing: .01em;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .skip {
+      position: absolute; left: .75rem; top: -3rem; background: var(--navy); color: var(--cream);
+      padding: .5rem 1rem; z-index: 100; border-radius: 2px;
+    }
+    .skip:focus { top: .75rem; }
+
+    /* NAV */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.5rem; height: var(--nav-h);
+      color: var(--cream);
+      transition: background .35s ease, box-shadow .35s ease, color .35s ease;
+    }
+    .nav.solid {
+      background: color-mix(in srgb, var(--navy) 92%, transparent);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(12,26,43,.25);
+    }
+    .brand {
+      display: flex; align-items: center; gap: .7rem;
+      text-decoration: none; letter-spacing: .18em; text-transform: uppercase;
+      font-size: .72rem; font-weight: 500;
+    }
+    .brand svg { width: 28px; height: 28px; }
+    .nav-links {
+      display: flex; gap: 1.6rem; list-style: none;
+      font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 400;
+    }
+    .nav-links a {
+      text-decoration: none; position: relative; padding: .2rem 0; opacity: .88;
+    }
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .menu {
+      display: none; background: none; border: 0; color: inherit; cursor: pointer;
+      width: 42px; height: 42px; position: relative;
+    }
+    .menu span, .menu span::before, .menu span::after {
+      position: absolute; left: 10px; right: 10px; height: 1.5px; background: currentColor;
+    }
+    .menu span { top: 50%; }
+    .menu span::before, .menu span::after { content: ""; }
+    .menu span::before { top: -7px; }
+    .menu span::after { top: 7px; }
+
+    /* HERO */
+    .hero {
+      position: relative; min-height: 100svh; color: var(--cream);
+      display: grid; place-items: stretch; overflow: hidden;
+      background: var(--navy);
+    }
+    .hero-photo {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 22% 50%;
+      transform: scale(1.06);
+      animation: ken 22s ease-out forwards;
+    }
+    @keyframes ken { to { transform: scale(1); } }
+    .hero-shade {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(14,42,31,.18) 0%, rgba(12,26,43,.15) 38%, rgba(12,26,43,.72) 68%, rgba(12,26,43,.88) 100%),
+        linear-gradient(180deg, rgba(12,26,43,.35) 0%, transparent 28%, rgba(14,42,31,.55) 100%);
+    }
+    .hero-copy {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: calc(var(--nav-h) + 2rem) 7vw 4.5rem 42%;
+      max-width: 100%;
+    }
+    .kicker {
+      font-size: .72rem; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.1rem;
+    }
+    .hero h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 500; font-size: clamp(3.4rem, 8vw, 7.2rem);
+      line-height: .88; letter-spacing: -.02em;
+    }
+    .hero h1 em { font-style: italic; font-weight: 400; color: var(--gold); display: block; }
+    .lede {
+      margin-top: 1.1rem; font-size: .95rem; letter-spacing: .2em; text-transform: uppercase; opacity: .85;
+    }
+    .deck {
+      margin-top: 1.4rem; max-width: 28rem; font-weight: 300; font-size: 1.05rem; line-height: 1.6; opacity: .9;
+    }
+    .motto {
+      margin-top: 1.6rem; font-family: "Cormorant Garamond", serif; font-style: italic;
+      font-size: 1.15rem; color: color-mix(in srgb, var(--gold) 80%, white); opacity: .9;
+    }
+    .ctas { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2.1rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: .85rem 1.35rem; text-decoration: none; font-size: .75rem;
+      letter-spacing: .18em; text-transform: uppercase; border: 1px solid var(--gold);
+      transition: background .2s ease, color .2s ease;
+    }
+    .btn.solid { background: var(--gold); color: var(--navy); }
+    .btn.solid:hover { background: var(--cream); border-color: var(--cream); }
+    .btn.ghost { color: var(--cream); }
+    .btn.ghost:hover { background: color-mix(in srgb, var(--gold) 18%, transparent); }
+
+    .wrap { width: min(1120px, calc(100% - 2.4rem)); margin-inline: auto; }
+    section { padding: 5.5rem 0; }
+    .section-kicker {
+      font-size: .7rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-dim);
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 500; line-height: 1.05;
+      color: var(--navy);
+    }
+    .rule { width: 3.2rem; height: 1px; background: var(--gold); margin: 1.1rem 0 1.6rem; border: 0; }
+
+    /* TEAM */
+    #team { background: var(--cream); }
+    .team-grid {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 3.5rem; align-items: center;
+    }
+    .team-photo {
+      position: relative;
+    }
+    .team-photo img {
+      width: 100%; height: min(640px, 78vw); object-fit: cover; object-position: center 40%;
+      box-shadow: var(--shadow);
+    }
+    .team-photo figcaption {
+      position: absolute; left: 1rem; bottom: 1rem;
+      background: color-mix(in srgb, var(--navy) 82%, transparent);
+      color: var(--cream); backdrop-filter: blur(8px);
+      font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
+      padding: .55rem .8rem;
+    }
+    .offset-frame {
+      position: relative;
+    }
+    .offset-frame::before {
+      content: ""; position: absolute; inset: 1.1rem -1.1rem -1.1rem 1.1rem;
+      border: 1px solid var(--gold); pointer-events: none;
+    }
+    .prose { color: var(--ink); font-size: 1.05rem; max-width: 38rem; }
+    .prose p + p { margin-top: 1rem; }
+    .contact {
+      margin-top: 2rem; background: var(--navy); color: var(--cream); padding: 1.5rem 1.4rem;
+    }
+    .contact h3 {
+      font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 500; margin-bottom: .7rem;
+    }
+    .contact dl { display: grid; grid-template-columns: 7.2rem 1fr; gap: .35rem 1rem; font-size: .92rem; }
+    .contact dt { color: var(--gold); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; padding-top: .35rem; }
+    .contact a { color: var(--cream); }
+    .contact a:hover { color: var(--gold); }
+    .note { margin-top: 1.1rem; font-size: .85rem; color: var(--muted); }
+
+    /* SCHEDULE */
+    #schedule { background: var(--ivory); }
+    .banner {
+      display: inline-block; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      border: 1px solid var(--gold); color: var(--gold-dim); padding: .35rem .7rem; margin-bottom: 1.4rem;
+    }
+    .schedule-wrap { overflow-x: auto; margin-top: 1.5rem; }
+    table.slate {
+      width: 100%; border-collapse: collapse; min-width: 640px;
+      font-size: .95rem;
+    }
+    .slate th {
+      text-align: left; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold-dim); font-weight: 500; padding: .8rem .6rem; border-bottom: 1px solid var(--rule);
+    }
+    .slate td { padding: 1rem .6rem; border-bottom: 1px solid color-mix(in srgb, var(--forest) 12%, transparent); vertical-align: top; }
+    .slate tr:hover td { background: color-mix(in srgb, var(--fairway) 6%, transparent); }
+    .slate .when { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; color: var(--navy); }
+    .muted { color: var(--muted); }
+    .pill {
+      font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+      border: 1px solid color-mix(in srgb, var(--moss) 50%, transparent); color: var(--fairway);
+      padding: .2rem .5rem; display: inline-block;
+    }
+
+    /* GALLERY */
+    #gallery { background: var(--forest); color: var(--cream); }
+    #gallery .section-title { color: var(--cream); }
+    #gallery .section-kicker, #gallery .muted { color: color-mix(in srgb, var(--gold) 75%, white); }
+    .masonry {
+      columns: 3; column-gap: 1rem; margin-top: 2rem;
+    }
+    .masonry figure {
+      break-inside: avoid; margin: 0 0 1rem; position: relative; cursor: zoom-in;
+    }
+    .masonry img { width: 100%; height: auto; }
+    .masonry figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0; padding: .7rem .8rem .6rem;
+      background: linear-gradient(transparent, rgba(12,26,43,.72));
+      font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .masonry figure:hover img { filter: brightness(1.06); }
+
+    /* NEWS */
+    #news { background: var(--cream); }
+    .news-list { display: grid; gap: 0; margin-top: .5rem; }
+    .news-item {
+      display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.5rem;
+      padding: 1.4rem 0; border-bottom: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+    }
+    .news-item time {
+      font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-dim); padding-top: .35rem;
+    }
+    .news-item h3 { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 500; color: var(--navy); }
+    .news-item p { margin-top: .4rem; color: var(--ink); }
+
+    footer {
+      background: var(--navy); color: color-mix(in srgb, var(--cream) 80%, transparent);
+      padding: 2.2rem 0; font-size: .8rem; letter-spacing: .08em;
+    }
+    footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    footer strong { color: var(--gold); font-weight: 500; }
+
+    /* LIGHTBOX */
+    .lb {
+      position: fixed; inset: 0; background: rgba(8,14,18,.92); z-index: 80;
+      display: none; align-items: center; justify-content: center; padding: 2rem;
+    }
+    .lb.open { display: flex; }
+    .lb img { max-width: min(1200px, 92vw); max-height: 88vh; box-shadow: var(--shadow); }
+    .lb button {
+      position: absolute; top: 1rem; right: 1rem; background: none; border: 0; color: var(--cream);
+      font-size: 2rem; cursor: pointer; line-height: 1;
+    }
+
+    @media (max-width: 900px) {
+      .hero-copy { padding: calc(var(--nav-h) + 1.2rem) 1.3rem 3rem; }
+      .hero-shade {
+        background:
+          linear-gradient(180deg, rgba(12,26,43,.4) 0%, rgba(12,26,43,.2) 30%, rgba(12,26,43,.78) 100%);
+      }
+      .hero-photo { object-position: 30% 50%; }
+      .team-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+      .offset-frame::before { display: none; }
+      .masonry { columns: 2; }
+      .menu { display: block; }
+      .nav-links {
+        position: fixed; inset: var(--nav-h) 0 auto 0; background: var(--navy);
+        flex-direction: column; padding: 1.2rem 1.5rem 1.6rem; gap: 1rem;
+        display: none;
+      }
+      .nav.open .nav-links { display: flex; }
+      .nav.open { background: var(--navy); }
+    }
+    @media (max-width: 560px) {
+      .masonry { columns: 1; }
+      .news-item { grid-template-columns: 1fr; gap: .35rem; }
+      .contact dl { grid-template-columns: 1fr; }
+    }
+
+    /* LOVE */
+    .love-wrap {
+      margin-top: 1.6rem;
+      display: flex; flex-direction: column; align-items: flex-start; gap: .7rem;
+    }
+    .love-btn {
+      position: relative;
+      display: inline-flex; align-items: center; gap: .75rem;
+      background: var(--navy); color: var(--cream);
+      border: 1px solid var(--gold);
+      padding: .9rem 1.35rem;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      overflow: visible;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .love-btn svg { width: 22px; height: 22px; fill: transparent; stroke: var(--gold); stroke-width: 1.6; transition: fill .2s ease, stroke .2s ease, transform .2s ease; }
+    .love-btn:hover { background: color-mix(in srgb, var(--navy) 85%, var(--gold)); }
+    .love-btn.on {
+      background: var(--maroon); border-color: color-mix(in srgb, var(--gold) 50%, var(--maroon));
+    }
+    .love-btn.on svg { fill: var(--cream); stroke: var(--cream); }
+    .love-btn.pop svg { animation: heartPop .45s ease; }
+    @keyframes heartPop {
+      0% { transform: scale(1); }
+      35% { transform: scale(1.35); }
+      100% { transform: scale(1); }
+    }
+    .love-count {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--navy);
+    }
+    .love-count strong { font-style: normal; font-weight: 600; color: var(--maroon); }
+    .love-burst {
+      position: absolute; left: 1.1rem; top: .4rem; width: 22px; height: 22px;
+      pointer-events: none;
+    }
+    .love-burst i {
+      position: absolute; left: 50%; top: 50%;
+      width: 8px; height: 8px;
+      margin: -4px;
+      background: var(--maroon);
+      clip-path: path("M4 7.2C2.2 5.6 0 4.1 0 2.3A2.3 2.3 0 0 1 4 0a2.3 2.3 0 0 1 4 2.3C8 4.1 5.8 5.6 4 7.2z");
+      animation: burst 700ms ease-out forwards;
+    }
+    @keyframes burst {
+      0% { transform: translate(0,0) scale(.4); opacity: 1; }
+      100% { transform: translate(var(--dx), var(--dy)) scale(1); opacity: 0; }
+    }
+
+    .conduct { background: var(--ivory); }
+    .conduct-lead { max-width: 40rem; margin-bottom: 2rem; }
+    .conduct-grid {
+      display: grid; gap: 1rem;
+    }
+    @media (min-width: 800px) {
+      .conduct-grid { grid-template-columns: 1fr 1fr; }
+      .conduct-grid .span2 { grid-column: 1 / -1; }
+    }
+    .card {
+      background: var(--cream); padding: 1.35rem 1.3rem;
+      border-top: 2px solid var(--gold);
+    }
+    .card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.55rem; font-weight: 500; color: var(--navy); margin-bottom: .55rem;
+    }
+    .card ul { margin: .4rem 0 0 1.1rem; }
+    .card li { margin: .3rem 0; }
+    .card .sub { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: .35rem; }
+    .paper-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      margin-top: 1.4rem; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: .15rem;
+    }
+    .paper-link:hover { color: var(--gold-dim); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-photo { animation: none; transform: none; }
+      .love-btn.pop svg, .love-burst i { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+    <a class="brand" href="#home">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="#C4A35A" stroke-width="1"/>
+        <path d="M16 6c4.2 5.2 9 8.2 9 14a9 9 0 1 1-18 0c0-5.8 4.8-8.8 9-14z" fill="#C4A35A"/>
+      </svg>
+      <span>Falcons Golf</span>
+    </a>
+    <button class="menu" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#conduct">Conduct</a></li>
+      <li><a href="#news">News</a></li>
+    </ul>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <img class="hero-photo" src="photos/hero-swing.jpg?v=2" alt="A Falcons golfer at the top of a backswing on the practice range">
+      <div class="hero-shade"></div>
+      <div class="hero-copy">
+        <p class="kicker">Charlotte, North Carolina</p>
+        <h1>Falcons <em>Golf</em></h1>
+        <p class="lede">Quail Hollow Middle School</p>
+        <p class="deck">A young team, a fairway, and the quiet work of getting better — one swing at a time.</p>
+        <p class="motto">Falcons S.O.A.R. on the P.A.T.H. to college.</p>
+        <div class="ctas">
+          <a class="btn solid" href="#schedule">Season slate</a>
+          <a class="btn ghost" href="#gallery">Practice photos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="wrap team-grid">
+        <figure class="team-photo offset-frame">
+          <img src="photos/team-first-tee.jpg" alt="The Quail Hollow Middle School golf team at First Tee Greater Charlotte">
+          <figcaption>Fall 2026 · First Tee Charlotte</figcaption>
+        </figure>
+        <div>
+          <p class="section-kicker">The team</p>
+          <h2 class="section-title">South Charlotte, first tee.</h2>
+          <hr class="rule">
+          <div class="prose">
+            <p>The Falcons play for Quail Hollow Middle School. Golf is a fall sport here — nine holes, midweek afternoons. Matches are at Sunset Hills Golf Course, by the airport.</p>
+            <p>Practice lives at First Tee Greater Charlotte, where the team is learning the game the slow way: posture, patience, and a bag they carry themselves.</p>
+          </div>
+          <div class="love-wrap">
+            <button class="love-btn" id="loveBtn" type="button" aria-pressed="false" aria-label="Send love to the Falcons">
+              <span class="love-burst" id="loveBurst" aria-hidden="true"></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.4-4.35-9.2-8.2C.7 10.1.9 6.7 3.4 4.9 5.4 3.4 8 3.7 12 7.2c4-3.5 6.6-3.8 8.6-2.3 2.5 1.8 2.7 5.2.6 7.9C18.4 16.65 12 21 12 21z"/></svg>
+              <span id="loveLabel">Love this team</span>
+            </button>
+            <p class="love-count" id="loveCount">Parents, tap to send a little love.</p>
+          </div>
+          <!-- EDIT COACH: change the Golf Coach line below when a name is set -->
+          <aside class="contact">
+            <h3>Coach &amp; contact</h3>
+            <dl>
+              <dt>Golf coach</dt>
+              <dd>Fernando Daneri</dd>
+              <dt>Athletic director</dt>
+              <dd>Brandon Blackley<br><a href="mailto:brandonb.blackley@cms.k12.nc.us">brandonb.blackley@cms.k12.nc.us</a></dd>
+              <dt>School</dt>
+              <dd>2901 Smithfield Church Rd<br>Charlotte, NC 28210<br><a href="tel:+19803433620">980-343-3620</a></dd>
+              <dt>Athletics</dt>
+              <dd><a href="https://cmsathleticzone.com/quail-hollow/golf/" rel="noopener">CMS Athletic Zone — Golf</a></dd>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="wrap">
+        <p class="section-kicker">Conference &amp; tournaments</p>
+        <h2 class="section-title">The slate.</h2>
+        <hr class="rule">
+        <span class="banner">2026–27 CMS golf · add scores only</span>
+        <p class="muted">Official district dates. All Falcons matches at <strong>Sunset Hills Golf Course</strong>, 800 Radio Rd. First tee 4:30 p.m. (groups through 5:30). Opponents fill in as Coach Daneri posts them. Results stay blank until we have them.</p>
+        <div class="schedule-wrap">
+          <table class="slate">
+            <thead>
+              <tr><th>When</th><th>Opponent</th><th>Where</th><th>Result</th></tr>
+            </thead>
+            <tbody id="scheduleBody"></tbody>
+          </table>
+        </div>
+        <p class="note">To update: open this file, find <code>EDIT SCHEDULE HERE</code>, and copy a row. A parent or player can do it in five minutes.</p>
+      </div>
+    </section>
+
+
+    <section id="conduct" class="conduct">
+      <div class="wrap">
+        <p class="section-kicker">QHMS student-athlete contract</p>
+        <h2 class="section-title">How we play, off the course too.</h2>
+        <hr class="rule">
+        <p class="conduct-lead">Falcons are held to a stricter code than non-athletes, on campus and off. Playing means you agree to this contract and CMS behavior policy. Golf notes below follow the school sheet.</p>
+        <div class="conduct-grid">
+          <article class="card span2">
+            <p class="sub">Absences</p>
+            <h3>Show up, or tell Coach.</h3>
+            <ul>
+              <li><strong>Excused</strong> (doctor, illness, death in the family, injury, school activity): no penalty for a missed practice or match.</li>
+              <li><strong>Unexcused</strong> means the coach was not told. Next-game playing time is Coach Daneri’s call.</li>
+              <li>Miss more than half the school day and you sit that day’s practice or match.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <p class="sub">Minor</p>
+            <h3>Detentions, ISS, or hurting the team.</h3>
+            <p>Two lunch detentions, one after-school detention, ISS, or conduct detrimental to the team.</p>
+            <ul>
+              <li>1st — talk with coach/AD, parent contact, verbal warning.</li>
+              <li>2nd — sit the first half of a match.</li>
+              <li>3rd — one full match (golf).</li>
+              <li>4th — off the team.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <p class="sub">Major</p>
+            <h3>Bullying, fighting, OSS.</h3>
+            <p>Immediate suspension. A conference with the AD, administration, and coach has to happen before anyone comes back.</p>
+            <ul>
+              <li>1st — two matches (golf).</li>
+              <li>2nd, or two OSS/ISS incidents in a season — permanent removal.</li>
+            </ul>
+          </article>
+          <article class="card span2">
+            <p class="sub">Zero tolerance</p>
+            <h3>Harassment, assault, drugs, alcohol, weapons.</h3>
+            <p>Immediate removal. No reinstatement. A suspension on one QHMS team and another later in the year also ends sports for the rest of the year.</p>
+            <a class="paper-link" href="photos/conduct-contract.jpg" target="_blank" rel="noopener">View the paper contract</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="wrap">
+        <p class="section-kicker">Gallery</p>
+        <h2 class="section-title">On the range.</h2>
+        <hr class="rule">
+        <p class="muted">First Tee Greater Charlotte · September 2026. Tap a photo to open it.</p>
+        <div class="masonry" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="wrap">
+        <p class="section-kicker">Announcements</p>
+        <h2 class="section-title">In the shop.</h2>
+        <hr class="rule">
+        <div class="news-list" id="newsList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span><strong>Quail Hollow Middle School</strong> · Falcons Golf</span>
+      <span>Charlotte, NC · 2026</span>
+    </div>
+  </footer>
+
+  <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo">
+    <button type="button" id="lbClose" aria-label="Close">&times;</button>
+    <img id="lbImg" alt="">
+  </div>
+
+  <script>
+    /* ============================================================
+       EASY UPDATES — a middle schooler can edit the three lists
+       below. Copy a whole { ... }, block, change the words, save.
+       ============================================================ */
+
+    /* === EDIT ANNOUNCEMENTS HERE === */
+    const ANNOUNCEMENTS = [
+      {
+        date: "2026-09-08",
+        label: "Sep 8, 2026",
+        title: "First match: Tuesday the 8th",
+        body: "Opening CMS date is Tuesday, September 8 at Sunset Hills Golf Course. First tee 4:30 p.m. Opponent to be posted."
+      },
+      {
+        date: "2026-09-02",
+        label: "Sep 2, 2026",
+        title: "Practice is underway",
+        body: "The Falcons are on the range at First Tee Greater Charlotte. Photos from today’s session are in the gallery."
+      },
+      {
+        date: "2026-08-25",
+        label: "Fall 2026",
+        title: "DragonFly Max, then golf",
+        body: "Physicals and insurance have to be current in DragonFly Max before a golfer can compete. Ask Coach Blackley if a form is still outstanding."
+      },
+      {
+        date: "2026-08-20",
+        label: "Season note",
+        title: "Bring your own clubs",
+        body: "Golfers need their own set. Match dates will be posted here once the athletic office confirms the slate."
+      }
+    ];
+
+    /* === EDIT SCHEDULE HERE ===
+       status: "example" shows the gold outline pill.
+       Change status to "confirmed" after the athletic office sets the date.
+       Leave result empty until the match is played. */
+    const SCHEDULE = [
+      { date: "Tue, Sep 8", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "next" },
+      { date: "Mon, Sep 14", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Tue, Sep 22", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Mon, Sep 28", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Mon, Oct 5", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Mon, Oct 12", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Mon, Oct 19", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Mon, Oct 26", time: "Playoffs / weather", opponent: "Top 1–2 golfers per school", place: "Sunset Hills Golf Course", result: "", status: "playoff" }
+    ];
+
+    /* === EDIT GALLERY HERE ===
+       Drop a new .jpg in the photos folder, then copy a line. */
+    const GALLERY = [
+      { src: "photos/hero-swing.jpg", thumb: "photos/hero-swing-sm.jpg", alt: "Backswing on the practice range", caption: "Fall practice · September 2026" },
+      { src: "photos/team-first-tee.jpg", thumb: "photos/team-first-tee-sm.jpg", alt: "The team at First Tee Greater Charlotte", caption: "The Falcons · First Tee Charlotte" },
+      { src: "photos/practice-wide.jpg", thumb: "photos/practice-wide-sm.jpg", alt: "The team spread across the range", caption: "On the range · September 2026" },
+      { src: "photos/practice-range.jpg", thumb: "photos/practice-range-sm.jpg", alt: "Golf bags and range baskets at practice", caption: "Bags in the grass" },
+      { src: "photos/team-seven.jpg", thumb: "photos/team-seven-sm.jpg", alt: "Falcons golfers after practice", caption: "Fall practice · First Tee Charlotte" }
+    ];
+
+    /* ---- rendering (leave this alone) ---- */
+    const scheduleBody = document.getElementById("scheduleBody");
+    scheduleBody.innerHTML = SCHEDULE.map(row => `
+      <tr>
+        <td><div class="when">${row.date}</div><div class="muted">${row.time}</div></td>
+        <td>${row.opponent}${row.status === "next" ? '<div style="margin-top:.35rem"><span class="pill">Next</span></div>' : row.status === "playoff" ? '<div style="margin-top:.35rem"><span class="pill">Playoffs</span></div>' : ""}</td>
+        <td>${row.place}</td>
+        <td class="muted">${row.result || "—"}</td>
+      </tr>
+    `).join("");
+
+    const galleryGrid = document.getElementById("galleryGrid");
+    galleryGrid.innerHTML = GALLERY.map((g, i) => `
+      <figure data-i="${i}">
+        <img src="${g.thumb}" alt="${g.alt}">
+        <figcaption>${g.caption}</figcaption>
+      </figure>
+    `).join("");
+
+    const newsList = document.getElementById("newsList");
+    newsList.innerHTML = ANNOUNCEMENTS.map(n => `
+      <article class="news-item">
+        <time datetime="${n.date}">${n.label}</time>
+        <div>
+          <h3>${n.title}</h3>
+          <p>${n.body}</p>
+        </div>
+      </article>
+    `).join("");
+
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    galleryGrid.addEventListener("click", (e) => {
+      const fig = e.target.closest("figure");
+      if (!fig) return;
+      const g = GALLERY[Number(fig.dataset.i)];
+      lbImg.src = g.src;
+      lbImg.alt = g.alt;
+      lb.classList.add("open");
+    });
+    function closeLb() { lb.classList.remove("open"); lbImg.src = ""; }
+    document.getElementById("lbClose").addEventListener("click", closeLb);
+    lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
+
+    const nav = document.getElementById("nav");
+    const menuBtn = document.getElementById("menuBtn");
+    menuBtn.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.getElementById("navLinks").addEventListener("click", (e) => {
+      if (e.target.tagName === "A") nav.classList.remove("open");
+    });
+    const onScroll = () => nav.classList.toggle("solid", window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    /* Parent love button — one tap per browser, hearts fly, count is remembered. */
+    (function () {
+      const KEY = "qhms-falcons-loved";
+      const COUNT_KEY = "qhms-falcons-love-count";
+      const btn = document.getElementById("loveBtn");
+      const label = document.getElementById("loveLabel");
+      const countEl = document.getElementById("loveCount");
+      const burst = document.getElementById("loveBurst");
+      if (!btn) return;
+
+      let loved = localStorage.getItem(KEY) === "1";
+      let count = Number(localStorage.getItem(COUNT_KEY) || 0);
+
+      function phrase(n, mine) {
+        if (n < 1) return "Parents, tap to send a little love.";
+        if (n === 1 && mine) return "You sent love. The Falcons felt that.";
+        if (n === 1) return "<strong>1</strong> parent sent love.";
+        return "<strong>" + n + "</strong> parents have sent love.";
+      }
+      function paint() {
+        btn.classList.toggle("on", loved);
+        btn.setAttribute("aria-pressed", loved ? "true" : "false");
+        label.textContent = loved ? "Loved" : "Love this team";
+        countEl.innerHTML = phrase(count, loved);
+      }
+      function fly() {
+        burst.innerHTML = "";
+        for (let i = 0; i < 8; i++) {
+          const bit = document.createElement("i");
+          const angle = (-90 + (i - 3.5) * 18) * Math.PI / 180;
+          const dist = 28 + Math.random() * 22;
+          bit.style.setProperty("--dx", Math.cos(angle) * dist + "px");
+          bit.style.setProperty("--dy", Math.sin(angle) * dist + "px");
+          bit.style.animationDelay = (i * 18) + "ms";
+          burst.appendChild(bit);
+        }
+        btn.classList.remove("pop");
+        void btn.offsetWidth;
+        btn.classList.add("pop");
+      }
+      paint();
+      btn.addEventListener("click", () => {
+        loved = !loved;
+        count = Math.max(0, count + (loved ? 1 : -1));
+        localStorage.setItem(KEY, loved ? "1" : "0");
+        localStorage.setItem(COUNT_KEY, String(count));
+        if (loved) fly();
+        paint();
+      });
+    })();
+  </script>
+</body>
+</html>
