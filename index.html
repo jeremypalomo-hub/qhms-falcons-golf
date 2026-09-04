@@ -378,6 +378,36 @@
       color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: .15rem;
     }
     .paper-link:hover { color: var(--gold-dim); }
+
+    .climate {
+      display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.4rem;
+      margin-top: 1.8rem;
+      padding: .85rem 1rem;
+      width: fit-content; max-width: 100%;
+      background: color-mix(in srgb, var(--navy) 55%, transparent);
+      border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+      backdrop-filter: blur(10px);
+      color: var(--cream);
+      font-size: .78rem;
+      letter-spacing: .06em;
+    }
+    .climate .dot { width: 1px; height: 1.1rem; background: color-mix(in srgb, var(--gold) 45%, transparent); }
+    .climate .label {
+      font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold);
+    }
+    .climate .time {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.35rem; font-weight: 500; letter-spacing: .02em;
+    }
+    .climate .temp {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.35rem; font-weight: 500;
+    }
+    .climate .wx { opacity: .88; }
+    @media (max-width: 560px) {
+      .climate { width: 100%; }
+      .climate .dot { display: none; }
+    }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .hero-photo { animation: none; transform: none; }
@@ -419,6 +449,19 @@
         <div class="ctas">
           <a class="btn solid" href="#schedule">Season slate</a>
           <a class="btn ghost" href="#gallery">Practice photos</a>
+        </div>
+        <div class="climate" id="charlotteClimate" aria-live="polite">
+          <div>
+            <div class="label">Charlotte</div>
+            <div class="time" id="cltTime">—:—</div>
+          </div>
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <div class="label">Now</div>
+            <div class="temp"><span id="cltTemp">—</span>°F</div>
+          </div>
+          <span class="dot" aria-hidden="true"></span>
+          <div class="wx" id="cltWx">Loading weather…</div>
         </div>
       </div>
     </section>
@@ -677,6 +720,52 @@
     const onScroll = () => nav.classList.toggle("solid", window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+
+    /* Charlotte local time + live weather (Open-Meteo, no key). */
+    (function () {
+      const timeEl = document.getElementById("cltTime");
+      const tempEl = document.getElementById("cltTemp");
+      const wxEl = document.getElementById("cltWx");
+      if (!timeEl) return;
+
+      const WX = {
+        0: "Clear", 1: "Mostly clear", 2: "Partly cloudy", 3: "Overcast",
+        45: "Fog", 48: "Icy fog",
+        51: "Light drizzle", 53: "Drizzle", 55: "Heavy drizzle",
+        61: "Light rain", 63: "Rain", 65: "Heavy rain",
+        71: "Light snow", 73: "Snow", 75: "Heavy snow",
+        80: "Light showers", 81: "Showers", 82: "Heavy showers",
+        95: "Thunderstorm", 96: "Thunderstorm", 99: "Severe storm"
+      };
+
+      function tick() {
+        timeEl.textContent = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/New_York",
+          hour: "numeric",
+          minute: "2-digit"
+        }).format(new Date());
+      }
+      tick();
+      setInterval(tick, 15000);
+
+      const url = "https://api.open-meteo.com/v1/forecast?latitude=35.2271&longitude=-80.8431&current=temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York";
+      fetch(url)
+        .then(r => r.json())
+        .then(data => {
+          const c = data.current || {};
+          if (typeof c.temperature_2m === "number") {
+            tempEl.textContent = Math.round(c.temperature_2m);
+          }
+          const label = WX[c.weather_code] || "Charlotte";
+          const bits = [label];
+          if (typeof c.relative_humidity_2m === "number") bits.push(c.relative_humidity_2m + "% humidity");
+          if (typeof c.wind_speed_10m === "number") bits.push(Math.round(c.wind_speed_10m) + " mph wind");
+          wxEl.textContent = bits.join(" · ");
+        })
+        .catch(() => {
+          wxEl.textContent = "Weather unavailable";
+        });
+    })();
 
     /* Parent love button — one tap per browser, hearts fly, count is remembered. */
     (function () {
