@@ -511,8 +511,8 @@
         <p class="section-kicker">Conference &amp; tournaments</p>
         <h2 class="section-title">The slate.</h2>
         <hr class="rule">
-        <span class="banner">2026–27 CMS golf · add scores only</span>
-        <p class="muted">Official district dates. All Falcons matches at <strong>Sunset Hills Golf Course</strong>, 800 Radio Rd. First tee 4:30 p.m. (groups through 5:30). Opponents fill in as Coach Daneri posts them. Results stay blank until we have them.</p>
+        <span class="banner">2026–27 Quail Hollow · add scores only</span>
+        <p class="muted">All matches at <strong>Sunset Hills Golf Course</strong>, 800 Radio Rd. Quail Hollow tee times are listed first for our team. Four golfers each week · best 3 scores count · everyone from the red tees. Results stay blank until we have them.</p>
         <div class="schedule-wrap">
           <table class="slate">
             <thead>
@@ -520,6 +520,16 @@
             </thead>
             <tbody id="scheduleBody"></tbody>
           </table>
+        </div>
+        <div class="card" style="margin-top:1.6rem">
+          <p class="sub">Match rules</p>
+          <h3>How we score it.</h3>
+          <ul>
+            <li>4 golfers each week · 2 foursomes. Best 3 scores count for the team total.</li>
+            <li>Double par is max — pick up if not in the hole.</li>
+            <li>Everyone plays from the <strong>red tees</strong>. Carry your own bag. Own clubs. No carts, caddies, rangefinders, or parental help.</li>
+            <li>Parents stay on or near the cart path. All stakes played as red — drop and 1 stroke.</li>
+          </ul>
         </div>
         <p class="note">To update: open this file, find <code>EDIT SCHEDULE HERE</code>, and copy a row. A parent or player can do it in five minutes.</p>
       </div>
@@ -613,10 +623,10 @@
     /* === EDIT ANNOUNCEMENTS HERE === */
     const ANNOUNCEMENTS = [
       {
-        date: "2026-09-08",
-        label: "Sep 8, 2026",
-        title: "First match: Tuesday the 8th",
-        body: "Opening CMS date is Tuesday, September 8 at Sunset Hills Golf Course. First tee 4:30 p.m. Opponent to be posted."
+        date: "2026-09-17",
+        label: "Sep 17, 2026",
+        title: "First match: Thursday the 17th",
+        body: "Week 1 is a bye. Opening match is Thursday, September 17 vs Randolph at Sunset Hills — Quail Hollow tees at 5:06 p.m."
       },
       {
         date: "2026-09-02",
@@ -643,14 +653,14 @@
        Change status to "confirmed" after the athletic office sets the date.
        Leave result empty until the match is played. */
     const SCHEDULE = [
-      { date: "Tue, Sep 8", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "next" },
-      { date: "Mon, Sep 14", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Tue, Sep 22", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Mon, Sep 28", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Mon, Oct 5", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Mon, Oct 12", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Mon, Oct 19", time: "First tee 4:30 p.m.", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Mon, Oct 26", time: "Playoffs / weather", opponent: "Top 1–2 golfers per school", place: "Sunset Hills Golf Course", result: "", status: "playoff" }
+      { date: "Week 1 · Sep 7–11", time: "Bye week", opponent: "No matches", place: "—", result: "", status: "bye" },
+      { date: "Thu, Sep 17", time: "QH tee 5:06 p.m. · Randolph 4:57", opponent: "Randolph", place: "Sunset Hills Golf Course", result: "", status: "next" },
+      { date: "Thu, Sep 24", time: "QH tee 5:06 p.m. · Cato Ridge 5:15", opponent: "Cato Ridge", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Mon, Sep 28", time: "QH tee 5:06 p.m. · McClintock 4:57", opponent: "McClintock", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Mon, Oct 5", time: "QH tee 4:39 p.m. · James Martin 4:30", opponent: "James Martin", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Tue, Oct 13", time: "QH tee 4:48 p.m. · Coulwood 4:39", opponent: "Coulwood", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Tue, Oct 20", time: "QH tee 4:20 p.m. · Cochrane 4:12", opponent: "Cochrane", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
+      { date: "Championship · TBD", time: "Individual event", opponent: "Top 2 golfers from each school", place: "TBD", result: "", status: "playoff" }
     ];
 
     /* === EDIT GALLERY HERE ===
@@ -668,7 +678,7 @@
     scheduleBody.innerHTML = SCHEDULE.map(row => `
       <tr>
         <td><div class="when">${row.date}</div><div class="muted">${row.time}</div></td>
-        <td>${row.opponent}${row.status === "next" ? '<div style="margin-top:.35rem"><span class="pill">Next</span></div>' : row.status === "playoff" ? '<div style="margin-top:.35rem"><span class="pill">Playoffs</span></div>' : ""}</td>
+        <td>${row.opponent}${row.status === "next" ? '<div style="margin-top:.35rem"><span class="pill">Next</span></div>' : row.status === "bye" ? '<div style="margin-top:.35rem"><span class="pill">Bye</span></div>' : row.status === "playoff" ? '<div style="margin-top:.35rem"><span class="pill">Championship</span></div>' : ""}</td>
         <td>${row.place}</td>
         <td class="muted">${row.result || "—"}</td>
       </tr>
