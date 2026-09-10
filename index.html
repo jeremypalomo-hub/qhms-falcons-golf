@@ -512,11 +512,11 @@
         <h2 class="section-title">The slate.</h2>
         <hr class="rule">
         <span class="banner">2026–27 Quail Hollow · add scores only</span>
-        <p class="muted">All matches at <strong>Sunset Hills Golf Course</strong>, 800 Radio Rd. Quail Hollow tee times are listed first for our team. Four golfers each week · best 3 scores count · everyone from the red tees. Results stay blank until we have them.</p>
+        <p class="muted">All matches at <strong>Sunset Hills Golf Course</strong>, 800 Radio Rd. Quail Hollow tee times are listed for our team. Four golfers each week · lineups posted when set · best 3 scores count · everyone from the red tees. Results stay blank until we have them.</p>
         <div class="schedule-wrap">
           <table class="slate">
             <thead>
-              <tr><th>When</th><th>Opponent</th><th>Where</th><th>Result</th></tr>
+              <tr><th>When</th><th>Opponent</th><th>Lineup</th><th>Where</th><th>Result</th></tr>
             </thead>
             <tbody id="scheduleBody"></tbody>
           </table>
@@ -623,10 +623,16 @@
     /* === EDIT ANNOUNCEMENTS HERE === */
     const ANNOUNCEMENTS = [
       {
+        date: "2026-09-10",
+        label: "Sep 10, 2026",
+        title: "Tomorrow’s lineup",
+        body: "Thu Sep 10 at Sunset Hills: Carter Palomo, Giovanni Gonzalez, Julian Gonzalez, Caleb Goodwin."
+      },
+      {
         date: "2026-09-17",
         label: "Sep 17, 2026",
-        title: "First match: Thursday the 17th",
-        body: "Week 1 is a bye. Opening match is Thursday, September 17 vs Randolph at Sunset Hills — Quail Hollow tees at 5:06 p.m."
+        title: "Next Thursday vs Randolph",
+        body: "Thu Sep 17 (QH tee 5:06 p.m.): Cooper Horton, Uriah Lefler, Jackson Musante, Brody Rigsby."
       },
       {
         date: "2026-09-02",
@@ -653,14 +659,14 @@
        Change status to "confirmed" after the athletic office sets the date.
        Leave result empty until the match is played. */
     const SCHEDULE = [
-      { date: "Week 1 · Sep 7–11", time: "Bye week", opponent: "No matches", place: "—", result: "", status: "bye" },
-      { date: "Thu, Sep 17", time: "QH tee 5:06 p.m. · Randolph 4:57", opponent: "Randolph", place: "Sunset Hills Golf Course", result: "", status: "next" },
-      { date: "Thu, Sep 24", time: "QH tee 5:06 p.m. · Cato Ridge 5:15", opponent: "Cato Ridge", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Mon, Sep 28", time: "QH tee 5:06 p.m. · McClintock 4:57", opponent: "McClintock", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Mon, Oct 5", time: "QH tee 4:39 p.m. · James Martin 4:30", opponent: "James Martin", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Tue, Oct 13", time: "QH tee 4:48 p.m. · Coulwood 4:39", opponent: "Coulwood", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Tue, Oct 20", time: "QH tee 4:20 p.m. · Cochrane 4:12", opponent: "Cochrane", place: "Sunset Hills Golf Course", result: "", status: "confirmed" },
-      { date: "Championship · TBD", time: "Individual event", opponent: "Top 2 golfers from each school", place: "TBD", result: "", status: "playoff" }
+      { date: "Thu, Sep 10", time: "Tee time TBD", opponent: "TBD", place: "Sunset Hills Golf Course", result: "", status: "next", lineup: "Carter Palomo · Giovanni Gonzalez · Julian Gonzalez · Caleb Goodwin" },
+      { date: "Thu, Sep 17", time: "QH tee 5:06 p.m. · Randolph 4:57", opponent: "Randolph", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "Cooper Horton · Uriah Lefler · Jackson Musante · Brody Rigsby" },
+      { date: "Thu, Sep 24", time: "QH tee 5:06 p.m. · Cato Ridge 5:15", opponent: "Cato Ridge", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "" },
+      { date: "Mon, Sep 28", time: "QH tee 5:06 p.m. · McClintock 4:57", opponent: "McClintock", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "" },
+      { date: "Mon, Oct 5", time: "QH tee 4:39 p.m. · James Martin 4:30", opponent: "James Martin", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "" },
+      { date: "Tue, Oct 13", time: "QH tee 4:48 p.m. · Coulwood 4:39", opponent: "Coulwood", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "" },
+      { date: "Tue, Oct 20", time: "QH tee 4:20 p.m. · Cochrane 4:12", opponent: "Cochrane", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "" },
+      { date: "Championship · TBD", time: "Individual event", opponent: "Top 2 golfers from each school", place: "TBD", result: "", status: "playoff", lineup: "" }
     ];
 
     /* === EDIT GALLERY HERE ===
@@ -679,6 +685,7 @@
       <tr>
         <td><div class="when">${row.date}</div><div class="muted">${row.time}</div></td>
         <td>${row.opponent}${row.status === "next" ? '<div style="margin-top:.35rem"><span class="pill">Next</span></div>' : row.status === "bye" ? '<div style="margin-top:.35rem"><span class="pill">Bye</span></div>' : row.status === "playoff" ? '<div style="margin-top:.35rem"><span class="pill">Championship</span></div>' : ""}</td>
+        <td class="muted">${row.lineup || "—"}</td>
         <td>${row.place}</td>
         <td class="muted">${row.result || "—"}</td>
       </tr>
