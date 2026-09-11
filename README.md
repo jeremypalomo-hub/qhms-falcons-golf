@@ -47,3 +47,7 @@ Anytime you change a file and upload it again, the live page updates.
 
 - Photos are of real players. Don’t add last names in captions.
 - The sample schedule is a typical CMS middle-school golf window, not an official 2026 slate. Replace it.
+
+## Encouragement wall
+
+Parents post from the **Encourage** section. Each message shows as a quote with the parent’s name. Posts are shared live for every phone; you do not need to edit the HTML for those.

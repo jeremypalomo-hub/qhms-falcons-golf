@@ -240,6 +240,72 @@
     }
     .masonry figure:hover img { filter: brightness(1.06); }
 
+
+    /* ENCOURAGE */
+    #encourage { background: var(--ivory); }
+    .encourage-lead { max-width: 38rem; color: var(--muted); margin: 0 0 1.8rem; }
+    .encourage-grid {
+      display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem; align-items: start;
+    }
+    .encourage-form {
+      background: var(--cream); border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+      padding: 1.4rem 1.35rem 1.5rem; box-shadow: 0 12px 40px rgba(12,26,43,.06);
+    }
+    .encourage-form h3 {
+      font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 500;
+      color: var(--navy); margin-bottom: .35rem;
+    }
+    .encourage-form .hint { font-size: .88rem; color: var(--muted); margin-bottom: 1.1rem; }
+    .encourage-form label {
+      display: block; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--gold-dim); margin: .85rem 0 .35rem;
+    }
+    .encourage-form input,
+    .encourage-form textarea {
+      width: 100%; border: 1px solid color-mix(in srgb, var(--forest) 18%, transparent);
+      background: var(--ivory); color: var(--ink); font: inherit; padding: .7rem .8rem;
+      border-radius: 2px;
+    }
+    .encourage-form textarea { min-height: 7rem; resize: vertical; line-height: 1.5; }
+    .encourage-form input:focus,
+    .encourage-form textarea:focus {
+      outline: 2px solid color-mix(in srgb, var(--gold) 55%, transparent); outline-offset: 1px;
+    }
+    .encourage-form .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
+    .encourage-form .actions { display: flex; align-items: center; gap: 1rem; margin-top: 1.1rem; flex-wrap: wrap; }
+    .encourage-form button[type="submit"] {
+      appearance: none; border: 0; cursor: pointer;
+      background: var(--forest); color: var(--cream);
+      font: inherit; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+      padding: .85rem 1.25rem;
+    }
+    .encourage-form button[type="submit"]:hover { background: var(--fairway); }
+    .encourage-form button[type="submit"]:disabled { opacity: .55; cursor: wait; }
+    .encourage-status { font-size: .88rem; color: var(--fairway); min-height: 1.2em; }
+    .encourage-status.err { color: var(--maroon); }
+    .quote-wall { display: grid; gap: 1rem; }
+    .quote-card {
+      background: var(--cream); padding: 1.25rem 1.3rem 1.15rem;
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 10px 28px rgba(12,26,43,.05);
+    }
+    .quote-card blockquote {
+      font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 500;
+      font-style: italic; color: var(--navy); line-height: 1.35; quotes: "“" "”";
+    }
+    .quote-card blockquote::before { content: open-quote; color: var(--gold); margin-right: .1em; }
+    .quote-card blockquote::after { content: close-quote; color: var(--gold); margin-left: .05em; }
+    .quote-card footer {
+      background: none; color: var(--muted); padding: .7rem 0 0; font-size: .78rem;
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+    .quote-card footer cite { font-style: normal; color: var(--fairway); font-weight: 500; }
+    .quote-empty { color: var(--muted); font-size: .95rem; padding: .5rem 0; }
+    @media (max-width: 900px) {
+      .encourage-grid { grid-template-columns: 1fr; }
+    }
+
     /* NEWS */
     #news { background: var(--cream); }
     .news-list { display: grid; gap: 0; margin-top: .5rem; }
@@ -432,6 +498,7 @@
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#conduct">Conduct</a></li>
+      <li><a href="#encourage">Encourage</a></li>
       <li><a href="#news">News</a></li>
     </ul>
   </header>
@@ -589,6 +656,37 @@
         <hr class="rule">
         <p class="muted">First Tee Greater Charlotte · September 2026. Tap a photo to open it.</p>
         <div class="masonry" id="galleryGrid"></div>
+      </div>
+    </section>
+
+
+    <section id="encourage">
+      <div class="wrap">
+        <p class="section-kicker">From the parents</p>
+        <h2 class="section-title">Encouragement.</h2>
+        <hr class="rule">
+        <p class="encourage-lead">Leave a short note for the Falcons. When you post, your words and your name show on the wall for the whole team.</p>
+        <div class="encourage-grid">
+          <form class="encourage-form" id="encourageForm" novalidate>
+            <h3>Post a note</h3>
+            <p class="hint">Kind words only — keep it short and true.</p>
+            <label for="encourageName">Your name</label>
+            <input id="encourageName" name="name" type="text" maxlength="60" autocomplete="name" placeholder="Parent name" required>
+            <label for="encourageQuote">Your message</label>
+            <textarea id="encourageQuote" name="quote" maxlength="400" placeholder="Something encouraging for the team…" required></textarea>
+            <div class="hp" aria-hidden="true">
+              <label for="encourageCompany">Company</label>
+              <input id="encourageCompany" name="company" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="actions">
+              <button type="submit" id="encourageSubmit">Post message</button>
+              <p class="encourage-status" id="encourageStatus" role="status"></p>
+            </div>
+          </form>
+          <div class="quote-wall" id="quoteWall" aria-live="polite">
+            <p class="quote-empty">Loading messages…</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -804,6 +902,88 @@
         .catch(() => {
           wxEl.textContent = "Weather unavailable";
         });
+    })();
+
+
+    /* Parent encouragement wall — quote + name, shared for every phone. */
+    (function () {
+      const API = "https://qhms-encourage-production.up.railway.app";
+      const wall = document.getElementById("quoteWall");
+      const form = document.getElementById("encourageForm");
+      const statusEl = document.getElementById("encourageStatus");
+      const submitBtn = document.getElementById("encourageSubmit");
+      if (!wall || !form) return;
+
+      function esc(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function card(m) {
+        return (
+          '<article class="quote-card">' +
+            "<blockquote>" + esc(m.quote) + "</blockquote>" +
+            "<footer>— <cite>" + esc(m.name) + "</cite></footer>" +
+          "</article>"
+        );
+      }
+
+      function render(messages) {
+        if (!messages.length) {
+          wall.innerHTML = '<p class="quote-empty">Be the first parent to leave a note.</p>';
+          return;
+        }
+        wall.innerHTML = messages.map(card).join("");
+      }
+
+      function setStatus(msg, isErr) {
+        statusEl.textContent = msg || "";
+        statusEl.classList.toggle("err", !!isErr);
+      }
+
+      async function load() {
+        try {
+          const r = await fetch(API + "/messages", { cache: "no-store" });
+          const data = await r.json();
+          render(Array.isArray(data.messages) ? data.messages : []);
+        } catch (e) {
+          wall.innerHTML = '<p class="quote-empty">Messages will show here once they load.</p>';
+        }
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const name = (document.getElementById("encourageName").value || "").trim();
+        const quote = (document.getElementById("encourageQuote").value || "").trim();
+        const company = (document.getElementById("encourageCompany").value || "").trim();
+        if (name.length < 2 || quote.length < 3) {
+          setStatus("Add your name and a short message.", true);
+          return;
+        }
+        submitBtn.disabled = true;
+        setStatus("Posting…");
+        try {
+          const r = await fetch(API + "/messages", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, quote, company })
+          });
+          const data = await r.json().catch(() => ({}));
+          if (!r.ok) throw new Error(data.error || "Could not post");
+          form.reset();
+          setStatus("Posted — thank you.");
+          await load();
+        } catch (err) {
+          setStatus(err.message || "Could not post right now.", true);
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+
+      load();
     })();
 
     /* Parent love button — one tap per browser, hearts fly, count is remembered. */
