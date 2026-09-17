@@ -51,3 +51,7 @@ Anytime you change a file and upload it again, the live page updates.
 ## Encouragement wall
 
 Parents post from the **Encourage** section. Each message shows as a quote with the parent’s name. Posts are shared live for every phone; you do not need to edit the HTML for those.
+
+## Training videos
+
+The **Training** section embeds free YouTube basics. Edit the `TRAINING` list in `index.html` (`EDIT TRAINING HERE`) — each item needs a YouTube `id`, `tag`, `title`, and `blurb`.

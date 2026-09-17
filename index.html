@@ -241,6 +241,45 @@
     .masonry figure:hover img { filter: brightness(1.06); }
 
 
+
+    /* TRAINING */
+    #training { background: var(--cream); }
+    .training-lead { max-width: 40rem; color: var(--muted); margin: 0 0 1.6rem; }
+    .training-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem; margin-top: .5rem;
+    }
+    .train-card {
+      background: var(--ivory); border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+      overflow: hidden; display: flex; flex-direction: column;
+      box-shadow: 0 12px 36px rgba(12,26,43,.06);
+    }
+    .train-card .vid {
+      position: relative; aspect-ratio: 16 / 9; background: var(--navy);
+    }
+    .train-card iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+    }
+    .train-card .body { padding: 1rem 1.1rem 1.15rem; }
+    .train-card .tag {
+      font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: .35rem;
+    }
+    .train-card h3 {
+      font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 500;
+      color: var(--navy); line-height: 1.25;
+    }
+    .train-card p { margin-top: .4rem; color: var(--ink); font-size: .95rem; }
+    .train-card a.watch {
+      display: inline-block; margin-top: .7rem; font-size: .72rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--fairway); text-decoration: none;
+      border-bottom: 1px solid color-mix(in srgb, var(--gold) 60%, transparent); padding-bottom: .1rem;
+    }
+    .train-card a.watch:hover { color: var(--forest); }
+    @media (max-width: 700px) {
+      .training-grid { grid-template-columns: 1fr; }
+    }
+
     /* ENCOURAGE */
     #encourage { background: var(--ivory); }
     .encourage-lead { max-width: 38rem; color: var(--muted); margin: 0 0 1.8rem; }
@@ -499,6 +538,7 @@
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#conduct">Conduct</a></li>
       <li><a href="#encourage">Encourage</a></li>
+      <li><a href="#training">Training</a></li>
       <li><a href="#news">News</a></li>
     </ul>
   </header>
@@ -690,6 +730,18 @@
       </div>
     </section>
 
+
+    <section id="training">
+      <div class="wrap">
+        <p class="section-kicker">At home · free basics</p>
+        <h2 class="section-title">Training.</h2>
+        <hr class="rule">
+        <p class="training-lead">Free videos for Falcons to learn the basics — grip, setup, putting, chipping, and the full swing. Start with First Tee (where we practice), then work the short game and swing. Watch on your phone; bring questions to Coach Daneri.</p>
+        <div class="training-grid" id="trainingGrid"></div>
+        <p class="note" style="margin-top:1.4rem">To add a video: open this file, find <code>EDIT TRAINING HERE</code>, and copy a block. Use any free YouTube link.</p>
+      </div>
+    </section>
+
     <section id="news">
       <div class="wrap">
         <p class="section-kicker">Announcements</p>
@@ -718,8 +770,57 @@
        below. Copy a whole { ... }, block, change the words, save.
        ============================================================ */
 
+
+    /* === EDIT TRAINING HERE ===
+       Free YouTube videos for middle-school basics.
+       Copy a block, change youtube id / title / blurb. */
+    const TRAINING = [
+      {
+        id: "AcdQdgiR__s",
+        tag: "First Tee · Grip",
+        title: "Hotdog and bun grip",
+        blurb: "First Tee Colorado — the simple kids’ grip cue. Hands together, thumbs down the shaft."
+      },
+      {
+        id: "awqFdcZ-O08",
+        tag: "First Tee · Setup",
+        title: "Grip, aim, and stance",
+        blurb: "Get ready to swing: hold, aim like train tracks, and stand in an athletic stance."
+      },
+      {
+        id: "mC81PFRiPe8",
+        tag: "Junior · Short game",
+        title: "Putting, chipping, and backswing",
+        blurb: "PGA coach Jared Danford walks juniors through putting setup, chipping, and a simple backswing."
+      },
+      {
+        id: "03QAJHK9Iao",
+        tag: "Junior · Chipping",
+        title: "Chipping drills that stick",
+        blurb: "Junior-friendly landing-spot drills so chips fly the right distance and roll out."
+      },
+      {
+        id: "me5gjIUe1Ks",
+        tag: "Basics · Full swing",
+        title: "Full swing the easy way",
+        blurb: "Rick Shiels PGA — grip, setup, turn, and weight shift in plain language for beginners."
+      },
+      {
+        id: "XiXar9Z7afo",
+        tag: "Kids · Quick tips",
+        title: "Five quick tips for kids",
+        blurb: "Short, practical tips for young golfers building speed and loving the short game."
+      }
+    ];
+
     /* === EDIT ANNOUNCEMENTS HERE === */
     const ANNOUNCEMENTS = [
+      {
+        date: "2026-09-17",
+        label: "Sep 17, 2026",
+        title: "Free training videos for Falcons",
+        body: "A new Training section is on the site with free beginner videos — First Tee grip and setup, junior putting and chipping, and a simple full-swing lesson. Watch at home, then bring questions to Coach Daneri."
+      },
       {
         date: "2026-09-10",
         label: "Sep 10, 2026",
@@ -818,6 +919,30 @@
         <figcaption>${g.caption}</figcaption>
       </figure>
     `).join("");
+
+
+    const trainingGrid = document.getElementById("trainingGrid");
+    if (trainingGrid) {
+      trainingGrid.innerHTML = TRAINING.map(t => `
+        <article class="train-card">
+          <div class="vid">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/${t.id}"
+              title="${t.title.replace(/"/g, "&quot;")}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <div class="body">
+            <p class="tag">${t.tag}</p>
+            <h3>${t.title}</h3>
+            <p>${t.blurb}</p>
+            <a class="watch" href="https://www.youtube.com/watch?v=${t.id}" target="_blank" rel="noopener">Open on YouTube</a>
+          </div>
+        </article>
+      `).join("");
+    }
 
     const newsList = document.getElementById("newsList");
     newsList.innerHTML = ANNOUNCEMENTS.map(n => `
