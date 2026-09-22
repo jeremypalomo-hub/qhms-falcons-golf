@@ -295,6 +295,51 @@
       .training-grid { grid-template-columns: 1fr; }
     }
 
+
+    /* ETIQUETTE */
+    #etiquette { background: var(--forest); color: var(--cream); }
+    #etiquette .section-title { color: var(--cream); }
+    #etiquette .section-kicker { color: color-mix(in srgb, var(--gold) 80%, white); }
+    #etiquette .rule { border-color: color-mix(in srgb, var(--gold) 50%, transparent); }
+    .eti-lead { max-width: 40rem; color: color-mix(in srgb, var(--cream) 78%, transparent); margin: 0 0 1.8rem; }
+    .eti-motto {
+      font-family: "Cormorant Garamond", serif; font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      font-style: italic; color: var(--gold); margin: 0 0 1.6rem; letter-spacing: .02em;
+    }
+    .eti-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+    }
+    .eti-col {
+      background: color-mix(in srgb, var(--navy) 55%, transparent);
+      border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+      padding: 1.35rem 1.3rem 1.4rem;
+    }
+    .eti-col h3 {
+      font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 500;
+      color: var(--cream); margin-bottom: .85rem;
+    }
+    .eti-col.dos h3 { color: color-mix(in srgb, #9BC4A8 70%, var(--cream)); }
+    .eti-col.donts h3 { color: color-mix(in srgb, #E8A0A8 55%, var(--cream)); }
+    .eti-col ul { list-style: none; display: grid; gap: .85rem; }
+    .eti-col li strong {
+      display: block; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: .2rem;
+    }
+    .eti-col li span { color: color-mix(in srgb, var(--cream) 88%, transparent); font-size: .95rem; line-height: 1.45; }
+    .eti-footer {
+      margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: 1rem 1.5rem;
+      align-items: center; justify-content: space-between;
+    }
+    .eti-pillars {
+      font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+      color: color-mix(in srgb, var(--gold) 85%, white);
+    }
+    #etiquette .paper-link { color: var(--gold); border-color: color-mix(in srgb, var(--gold) 55%, transparent); }
+    #etiquette .paper-link:hover { color: var(--cream); }
+    @media (max-width: 800px) {
+      .eti-grid { grid-template-columns: 1fr; }
+    }
+
     /* ENCOURAGE */
     #encourage { background: var(--ivory); }
     .encourage-lead { max-width: 38rem; color: var(--muted); margin: 0 0 1.8rem; }
@@ -552,6 +597,7 @@
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#conduct">Conduct</a></li>
+      <li><a href="#etiquette">Etiquette</a></li>
       <li><a href="#encourage">Encourage</a></li>
       <li><a href="#training">Training</a></li>
       <li><a href="#news">News</a></li>
@@ -715,6 +761,47 @@
     </section>
 
 
+
+    <section id="etiquette">
+      <div class="wrap">
+        <p class="section-kicker">On the course</p>
+        <h2 class="section-title">Golf etiquette.</h2>
+        <hr class="rule">
+        <p class="eti-motto">Respect the game · Respect your team · Respect yourself</p>
+        <p class="eti-lead">Play like a Falcon. These habits make you a better teammate and a better golfer — at Sunset Hills, Ballantyne, and every course we visit.</p>
+        <div class="eti-grid">
+          <article class="eti-col dos">
+            <h3>Do’s</h3>
+            <ul>
+              <li><strong>Be respectful</strong><span>Show respect to your playing partners, coaches, opponents, course staff, and yourself.</span></li>
+              <li><strong>Be on time</strong><span>Arrive early, be ready to play when it’s your turn, and keep pace with the group ahead.</span></li>
+              <li><strong>Take care of the course</strong><span>Fix your divots, repair ball marks on the green, and rake bunkers. Leave the course better than you found it.</span></li>
+              <li><strong>Play ready golf</strong><span>Know your yardages, keep your clubs organized, and be ready to hit when it’s your turn.</span></li>
+              <li><strong>Use positive language</strong><span>Encourage your teammates, be a good sport, and keep it positive — even when it’s tough.</span></li>
+              <li><strong>Dress appropriately</strong><span>Wear proper golf attire, follow the dress code, and look neat on and off the course.</span></li>
+            </ul>
+          </article>
+          <article class="eti-col donts">
+            <h3>Don’ts</h3>
+            <ul>
+              <li><strong>Don’t use your phone</strong><span>No texting, calling, or social media on the course. Stay focused on your game and your team.</span></li>
+              <li><strong>Don’t talk during others’ shots</strong><span>Be quiet and let others hit. Show good manners and patience.</span></li>
+              <li><strong>Don’t ride unless permitted</strong><span>Walk when possible. Use a cart only when the course or coach allows it.</span></li>
+              <li><strong>Don’t get frustrated</strong><span>Stay calm, keep your composure, and learn from every shot — good or bad.</span></li>
+              <li><strong>Don’t damage equipment</strong><span>Take care of your clubs, bags, and others’ equipment.</span></li>
+              <li><strong>Don’t complain or bad-mouth others</strong><span>Keep negative talk to yourself. Be a leader, not a complainer.</span></li>
+              <li><strong>Don’t crowd the shot</strong><span>Don’t stand close to or directly behind the ball, or directly behind the hole, when a player is about to play.</span></li>
+              <li><strong>Don’t stand on a putting line</strong><span>On the green, don’t stand on another player’s line of putt, and don’t cast a shadow over their line while they stroke.</span></li>
+            </ul>
+          </article>
+        </div>
+        <div class="eti-footer">
+          <p class="eti-pillars">Character · Teamwork · Respect · Success</p>
+          <a class="paper-link" href="photos/golf-etiquette.jpg" target="_blank" rel="noopener">View the etiquette poster</a>
+        </div>
+      </div>
+    </section>
+
     <section id="encourage">
       <div class="wrap">
         <p class="section-kicker">From the parents</p>
@@ -824,6 +911,12 @@
 
     /* === EDIT ANNOUNCEMENTS HERE === */
     const ANNOUNCEMENTS = [
+      {
+        date: "2026-09-22",
+        label: "Sep 22, 2026",
+        title: "Golf etiquette posted",
+        body: "A new Etiquette section is on the site — Do’s and Don’ts for how Falcons carry themselves on the course. Open the full poster anytime from that page."
+      },
       {
         date: "2026-09-22",
         label: "Sep 22, 2026",
