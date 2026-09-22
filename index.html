@@ -634,7 +634,7 @@
         <h2 class="section-title">The slate.</h2>
         <hr class="rule">
         <span class="banner">2026–27 Quail Hollow · add scores only</span>
-        <p class="muted">All matches at <strong>Sunset Hills Golf Course</strong>, 800 Radio Rd. Quail Hollow tee times are listed for our team. Four golfers each week · lineups posted when set · best 3 scores count · everyone from the red tees. Results stay blank until we have them.</p>
+        <p class="muted">Most matches at <strong>Sunset Hills Golf Course</strong>, 800 Radio Rd. Exceptions are noted on the slate. Quail Hollow tee times are listed for our team. Four golfers each week · lineups posted when set · best 3 scores count · everyone from the red tees. Results stay blank until we have them.</p>
         <div class="schedule-wrap">
           <table class="slate">
             <thead>
@@ -825,10 +825,16 @@
     /* === EDIT ANNOUNCEMENTS HERE === */
     const ANNOUNCEMENTS = [
       {
+        date: "2026-09-22",
+        label: "Sep 22, 2026",
+        title: "Tuesday match at Ballantyne",
+        body: "Coach Daneri: Falcons play Tuesday at Ballantyne Golf Course (11120 Ballantyne Crossings Ave.). Coach Cabuno (Cato Ridge) has room for 8 players. Tee times 5:00, 5:10, 5:20, and 5:30 p.m. Confirm with Coach Daneri if you can play."
+      },
+      {
         date: "2026-09-17",
         label: "Sep 17, 2026",
         title: "Vs Randolph at Sunset Hills",
-        body: "Second foursome of the season — Cooper Horton, Uriah Lefler, Jackson Musante, and Brody Rigsby — played Randolph this afternoon at Sunset Hills. Match photos are in the gallery. Next up: Cato Ridge on Thu Sep 24."
+        body: "Second foursome of the season — Cooper Horton, Uriah Lefler, Jackson Musante, and Brody Rigsby — played Randolph this afternoon at Sunset Hills. Match photos are in the gallery. Next up was updated — see Ballantyne on Tue Sep 22."
       },
       {
         date: "2026-09-17",
@@ -887,7 +893,8 @@
     const SCHEDULE = [
       { date: "Thu, Sep 10", time: "Tee 5:06 & 5:15 p.m.", opponent: "Carmel", place: "Sunset Hills Golf Course", result: "", status: "played", lineup: "Caleb Goodwin · Giovanni Gonzalez · Julian Gonzalez · Carter Palomo" },
       { date: "Thu, Sep 17", time: "QH tee 5:06 p.m. · Randolph 4:57", opponent: "Randolph", place: "Sunset Hills Golf Course", result: "", status: "played", lineup: "Cooper Horton · Uriah Lefler · Jackson Musante · Brody Rigsby" },
-      { date: "Thu, Sep 24", time: "QH tee 5:06 p.m. · Cato Ridge 5:15", opponent: "Cato Ridge", place: "Sunset Hills Golf Course", result: "", status: "next", lineup: "" },
+      { date: "Tue, Sep 22", time: "Tee 5:00 · 5:10 · 5:20 · 5:30 p.m.", opponent: "Cato Ridge", place: "Ballantyne Golf Course", result: "", status: "next", lineup: "Up to 8 players · confirm with Coach Daneri" },
+      { date: "Thu, Sep 24", time: "QH tee 5:06 p.m. · Cato Ridge 5:15", opponent: "Cato Ridge", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "" },
       { date: "Mon, Sep 28", time: "QH tee 5:06 p.m. · McClintock 4:57", opponent: "McClintock", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "" },
       { date: "Mon, Oct 5", time: "QH tee 4:39 p.m. · James Martin 4:30", opponent: "James Martin", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "" },
       { date: "Tue, Oct 13", time: "QH tee 4:48 p.m. · Coulwood 4:39", opponent: "Coulwood", place: "Sunset Hills Golf Course", result: "", status: "confirmed", lineup: "" },
