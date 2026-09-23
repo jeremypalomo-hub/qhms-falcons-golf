@@ -10,8 +10,8 @@
   <meta property="og:title" content="Falcons Golf · Quail Hollow Middle School">
   <meta property="og:description" content="Quail Hollow Middle School Falcons golf — Charlotte, NC. Schedule, photos, training, and team news.">
   <meta property="og:url" content="https://jeremypalomo-hub.github.io/qhms-falcons-golf/">
-  <meta property="og:image" content="https://jeremypalomo-hub.github.io/qhms-falcons-golf/photos/og-share.jpg?v=2">
-  <meta property="og:image:secure_url" content="https://jeremypalomo-hub.github.io/qhms-falcons-golf/photos/og-share.jpg?v=2">
+  <meta property="og:image" content="https://jeremypalomo-hub.github.io/qhms-falcons-golf/photos/og-share.jpg?v=3">
+  <meta property="og:image:secure_url" content="https://jeremypalomo-hub.github.io/qhms-falcons-golf/photos/og-share.jpg?v=3">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Falcons Golf · Quail Hollow Middle School">
   <meta name="twitter:description" content="Schedule, photos, training, and team news for Quail Hollow Falcons golf.">
-  <meta name="twitter:image" content="https://jeremypalomo-hub.github.io/qhms-falcons-golf/photos/og-share.jpg?v=2">
+  <meta name="twitter:image" content="https://jeremypalomo-hub.github.io/qhms-falcons-golf/photos/og-share.jpg?v=3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -183,6 +183,25 @@
     .team-photo img {
       width: 100%; height: min(640px, 78vw); object-fit: cover; object-position: center 40%;
       box-shadow: var(--shadow);
+    }
+    .team-photo.poster {
+      background: var(--navy);
+      box-shadow: var(--shadow);
+    }
+    .team-photo.poster img {
+      height: auto;
+      max-height: min(78vh, 860px);
+      width: 100%;
+      object-fit: contain;
+      object-position: center top;
+      box-shadow: none;
+      display: block;
+    }
+    .team-photo.poster figcaption {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: .85rem;
+      white-space: nowrap;
     }
     .team-photo figcaption {
       position: absolute; left: 1rem; bottom: 1rem;
@@ -636,9 +655,9 @@
 
     <section id="team">
       <div class="wrap team-grid">
-        <figure class="team-photo offset-frame">
-          <img src="photos/team-first-tee.jpg" alt="The Quail Hollow Middle School golf team at First Tee Greater Charlotte">
-          <figcaption>Fall 2026 · First Tee Charlotte</figcaption>
+        <figure class="team-photo offset-frame poster">
+          <img src="photos/season-fairway-cover.jpg?v=1" alt="Fairway magazine-style season portrait of the Quail Hollow Falcons golf team, 2026">
+          <figcaption>Fairway · Quail Hollow 2026</figcaption>
         </figure>
         <div>
           <p class="section-kicker">The team</p>
@@ -646,7 +665,7 @@
           <hr class="rule">
           <div class="prose">
             <p>The Falcons play for Quail Hollow Middle School. Golf is a fall sport here — nine holes, midweek afternoons. Matches are at Sunset Hills Golf Course, by the airport.</p>
-            <p>Practice lives at First Tee Greater Charlotte, where the team is learning the game the slow way: posture, patience, and a bag they carry themselves.</p>
+            <p>This is the 2026 side — coaches and players on the fairway at golden hour. Practice lives at First Tee Greater Charlotte, where the team is learning the game the slow way: posture, patience, and a bag they carry themselves.</p>
           </div>
           <div class="love-wrap">
             <button class="love-btn" id="loveBtn" type="button" aria-pressed="false" aria-label="Send love to the Falcons">
@@ -912,6 +931,12 @@
     /* === EDIT ANNOUNCEMENTS HERE === */
     const ANNOUNCEMENTS = [
       {
+        date: "2026-09-23",
+        label: "Sep 23, 2026",
+        title: "Season portrait — Fairway",
+        body: "The 2026 Falcons season portrait is up: a magazine-style team photo on the fairway at sunset. You’ll see it on the Team page, at the top of the gallery, and when someone shares the site link."
+      },
+      {
         date: "2026-09-22",
         label: "Sep 22, 2026",
         title: "Golf etiquette posted",
@@ -998,6 +1023,7 @@
     /* === EDIT GALLERY HERE ===
        Drop a new .jpg in the photos folder, then copy a line. */
     const GALLERY = [
+      { src: "photos/season-fairway-cover.jpg", thumb: "photos/season-fairway-cover-sm.jpg", alt: "Fairway season portrait of the Quail Hollow Falcons, 2026", caption: "Fairway · Quail Hollow 2026" },
       { src: "photos/match-ballantyne-water.jpg", thumb: "photos/match-ballantyne-water-sm.jpg", alt: "Falcons by the water at Ballantyne Golf Course", caption: "By the water · Ballantyne · September 22" },
       { src: "photos/match-ballantyne-tee.jpg", thumb: "photos/match-ballantyne-tee-sm.jpg", alt: "Falcons on the tee box at Ballantyne", caption: "On the tee · vs Cato Ridge" },
       { src: "photos/match-ballantyne-fairway.jpg", thumb: "photos/match-ballantyne-fairway-sm.jpg", alt: "Falcons on the fairway at Ballantyne with bunkers ahead", caption: "Fairway · Ballantyne · 6 holes" },
@@ -1017,7 +1043,7 @@
       { src: "photos/match-carmel-flag.jpg", thumb: "photos/match-carmel-flag-sm.jpg", alt: "Golfers around the flag on the green", caption: "Match day · Sunset Hills" },
       { src: "photos/practice-sep9.jpg", thumb: "photos/practice-sep9-sm.jpg", alt: "Falcons practicing on the range", caption: "Practice · September 9, 2026" },
       { src: "photos/hero-swing.jpg", thumb: "photos/hero-swing-sm.jpg", alt: "Overlook of Ballantyne Golf Course with Falcons on the fairway", caption: "Cover · Ballantyne · September 22, 2026" },
-      { src: "photos/team-first-tee.jpg", thumb: "photos/team-first-tee-sm.jpg", alt: "The team at First Tee Greater Charlotte", caption: "The Falcons · First Tee Charlotte" },
+      { src: "photos/team-first-tee-practice.jpg", thumb: "photos/team-first-tee-practice-sm.jpg", alt: "The team at First Tee Greater Charlotte", caption: "The Falcons · First Tee Charlotte" },
       { src: "photos/practice-wide.jpg", thumb: "photos/practice-wide-sm.jpg", alt: "The team spread across the range", caption: "On the range · September 2026" },
       { src: "photos/practice-range.jpg", thumb: "photos/practice-range-sm.jpg", alt: "Golf bags and range baskets at practice", caption: "Bags in the grass" },
       { src: "photos/team-seven.jpg", thumb: "photos/team-seven-sm.jpg", alt: "Falcons golfers after practice", caption: "Fall practice · First Tee Charlotte" }
