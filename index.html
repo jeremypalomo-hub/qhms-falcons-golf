@@ -602,6 +602,13 @@
       .hero-photo { animation: none; transform: none; }
       .love-btn.pop svg, .love-burst i { animation: none; }
     }
+    .coach-note { padding: clamp(2.5rem,6vw,4.5rem) 1.25rem; background: var(--ivory); }
+    .coach-card { max-width: 860px; margin: 0 auto; background: #fff; border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); border-top: 4px solid var(--gold); border-radius: 6px; padding: clamp(1.75rem,5vw,3.25rem); box-shadow: 0 18px 40px -24px rgba(12,26,43,.35); text-align: center; }
+    .coach-card .kicker { color: var(--gold-dim); letter-spacing: .22em; text-transform: uppercase; font-size: .75rem; margin: 0 0 .5rem; }
+    .coach-card h2 { font-family: "Cormorant Garamond", serif; color: var(--navy); font-weight: 600; font-size: clamp(1.8rem,4vw,2.5rem); margin: 0; }
+    .coach-card .accent { width: 64px; height: 2px; background: var(--gold); margin: 1rem auto 1.5rem; border: 0; }
+    .coach-card blockquote { margin: 0; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(1.2rem,2.6vw,1.55rem); line-height: 1.55; color: var(--fairway); }
+    .coach-card figcaption { margin-top: 1.25rem; color: var(--navy); font-size: .95rem; letter-spacing: .03em; }
   </style>
 </head>
 <body>
@@ -641,6 +648,7 @@
         <div class="ctas">
           <a class="btn solid" href="#schedule">Season slate</a>
           <a class="btn ghost" href="#gallery">Practice photos</a>
+          <a class="btn ghost" href="#coach-note">Coach&rsquo;s note</a>
         </div>
         <a class="next-chip" id="nextChip" href="#schedule" hidden></a>
         <div class="climate" id="charlotteClimate" aria-live="polite">
@@ -657,6 +665,16 @@
           <div class="wx" id="cltWx">Loading weather…</div>
         </div>
       </div>
+    </section>
+
+    <section class="coach-note" id="coach-note" aria-labelledby="coach-note-title">
+      <figure class="coach-card">
+        <p class="kicker">From the coach</p>
+        <h2 id="coach-note-title">A Note From Coach</h2>
+        <hr class="accent">
+        <blockquote><p>&ldquo;Good evening everyone. This is our first to last match here at Sunset Hills, and golf is giving the players the opportunity not just to develop the game but also calls for a lot of emotional control and discipline and of course good behavior. So it&rsquo;s a good opportunity for them to develop those soft skills while improving the game of golf. Appreciate what you&rsquo;ve been doing and letting us have these opportunities, man.&rdquo;</p></blockquote>
+        <figcaption>&mdash; Coach Fernando Daneri &middot; Oct 13, 2026</figcaption>
+      </figure>
     </section>
 
     <section id="team">
