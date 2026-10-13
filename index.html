@@ -20,6 +20,7 @@
   <meta name="twitter:title" content="Falcons Golf · Quail Hollow Middle School">
   <meta name="twitter:description" content="Schedule, photos, training, and team news for Quail Hollow Falcons golf.">
   <meta name="twitter:image" content="https://jeremypalomo-hub.github.io/qhms-falcons-golf/photos/og-share.jpg?v=6">
+  <meta name="theme-color" content="#0E2A1F">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -57,6 +58,10 @@
       padding: .5rem 1rem; z-index: 100; border-radius: 2px;
     }
     .skip:focus { top: .75rem; }
+    a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 3px solid #C4A35A; outline-offset: 3px; border-radius: 4px; }
+    .next-chip { display:inline-flex; flex-wrap:wrap; gap:.4rem .6rem; align-items:center; margin-top:1rem; padding:.55rem 1rem; border:1px solid rgba(196,163,90,.7); border-radius:999px; background:rgba(14,42,31,.55); backdrop-filter:blur(4px); color:#fff; font-size:.9rem; text-decoration:none; }
+    .next-chip b { color:#C4A35A; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 
     /* NAV */
     .nav {
@@ -625,7 +630,7 @@
 
   <main id="main">
     <section class="hero" id="home">
-      <img class="hero-photo" src="photos/hero-swing.jpg?v=6" alt="A Falcon finishing a tee shot at Sunset Hills">
+      <img class="hero-photo" src="photos/hero-swing.jpg?v=6" fetchpriority="high" alt="A Falcon finishing a tee shot at Sunset Hills">
       <div class="hero-shade"></div>
       <div class="hero-copy">
         <p class="kicker">Charlotte, North Carolina</p>
@@ -637,6 +642,7 @@
           <a class="btn solid" href="#schedule">Season slate</a>
           <a class="btn ghost" href="#gallery">Practice photos</a>
         </div>
+        <a class="next-chip" id="nextChip" href="#schedule" hidden></a>
         <div class="climate" id="charlotteClimate" aria-live="polite">
           <div>
             <div class="label">Charlotte</div>
@@ -656,7 +662,7 @@
     <section id="team">
       <div class="wrap team-grid">
         <figure class="team-photo offset-frame poster">
-          <img src="photos/season-fairway-cover.jpg?v=1" alt="Fairway magazine-style season portrait of the Quail Hollow Falcons golf team, 2026">
+          <img src="photos/season-fairway-cover.jpg?v=1" loading="lazy" decoding="async" alt="Fairway magazine-style season portrait of the Quail Hollow Falcons golf team, 2026">
           <figcaption>Fairway · Quail Hollow 2026</figcaption>
         </figure>
         <div>
@@ -1098,7 +1104,7 @@
     const galleryGrid = document.getElementById("galleryGrid");
     galleryGrid.innerHTML = GALLERY.map((g, i) => `
       <figure data-i="${i}">
-        <img src="${g.thumb}" alt="${g.alt}">
+        <img src="${g.thumb}" loading="lazy" decoding="async" alt="${g.alt}">
         <figcaption>${g.caption}</figcaption>
       </figure>
     `).join("");
@@ -1345,5 +1351,17 @@
       });
     })();
   </script>
+<script>
+  (function () {
+    try {
+      var n = (typeof SCHEDULE !== "undefined") && SCHEDULE.find(function (r) { return r.status === "next"; });
+      var el = document.getElementById("nextChip");
+      if (!n || !el) return;
+      el.innerHTML = "<b>Next match</b><span></span>";
+      el.querySelector("span").textContent = n.date + " · vs " + n.opponent + " · " + n.place + (n.time ? " · " + n.time : "");
+      el.hidden = false;
+    } catch (e) {}
+  })();
+</script>
 </body>
 </html>
