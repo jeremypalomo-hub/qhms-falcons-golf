@@ -1,5 +1,10 @@
 # Falcons Golf — Quail Hollow Middle School
 
+> **Retired after the 2026 season.** The site is now a thank-you page and photo gallery. The full season site (schedule, news, etiquette, training, encouragement wall) is saved on the `archive/2026-season` branch and the `season-2026-full` tag.
+>
+> To add a photo: put the `.jpg` and a `-sm.jpg` copy in `photos/` and add a line to `GALLERY` in `index.html`. The shared album link is `SHARED_ALBUM_URL` at the top of the script.
+
+
 A single-page site for the Charlotte Falcons golf team. No login, no app, no “CMS.” If you can edit a group text, you can update this.
 
 ## What’s in the folder
